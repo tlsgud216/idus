@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class GetMemberDetailDto {
-    Long id;
     String loginId;
     String name;
     String nickname;
@@ -16,7 +15,6 @@ public class GetMemberDetailDto {
 
     @QueryProjection
     public GetMemberDetailDto(
-            Long id,
             String loginId,
             String name,
             String nickname,
@@ -24,7 +22,6 @@ public class GetMemberDetailDto {
             String email,
             GenderTypes gender
     ) {
-        this.id = id;
         this.loginId = loginId;
         this.name = name;
         this.nickname = nickname;

@@ -19,7 +19,6 @@ public class MemberRepositorySupport extends QuerydslRepositorySupport {
     public GetMemberDetailDto findByMemberId(Long memberId) {
         return query.select(
                 new QGetMemberDetailDto(
-                        member.id,
                     member.loginId,
                     member.name,
                     member.nickname,

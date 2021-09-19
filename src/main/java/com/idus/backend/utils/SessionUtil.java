@@ -7,7 +7,7 @@ public class SessionUtil {
     static public Long currentMemberId() {
         Authentication test = SecurityContextHolder.getContext().getAuthentication();
         String auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-        if (auth.equals("anonymousUser")) return null;
+        if (auth.equals("anonymousUser")) throw new RuntimeException();
         else return Long.parseLong(auth);
     }
 }
