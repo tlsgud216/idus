@@ -66,4 +66,9 @@ public class MemberService implements UserDetailsService {
         Long memberId = SessionUtil.currentMemberId();
         return memberRepositorySupport.findByMemberId(memberId);
     }
+
+    // 여러회원목록조회
+    public void getMemberList() {
+
+    }
 }

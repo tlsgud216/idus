@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class GetOrderListDto {
     Long id;
-    String orderId;
+    String orderCode;
     String name;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
@@ -16,13 +16,13 @@ public class GetOrderListDto {
     @QueryProjection
     public GetOrderListDto(
             Long id,
-            String orderId,
+            String orderCode,
             String name,
             LocalDateTime createdAt,
             LocalDateTime updatedAt
     ) {
         this.id = id;
-        this.orderId = orderId;
+        this.orderCode = orderCode;
         this.name = name;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;

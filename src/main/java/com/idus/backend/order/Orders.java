@@ -12,7 +12,7 @@ public class Orders extends Auditing {
     Long id;
 
     @Column(unique = true)
-    String orderId;
+    String orderCode;
 
     @Column(nullable = false, length = 100)
     String name;

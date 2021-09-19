@@ -19,9 +19,9 @@ public class OrderRepositorySupport extends QuerydslRepositorySupport {
     }
 
     // 주문번호 생성시 주문번호 유무체크
-    public Long countByOrderId(String orderId) {
+    public Long countByOrderCode(String orderCode) {
         return query.selectFrom(order)
-                .where(order.orderId.eq(orderId))
+                .where(order.orderCode.eq(orderCode))
                 .fetchCount();
     }
 
@@ -30,7 +30,7 @@ public class OrderRepositorySupport extends QuerydslRepositorySupport {
         return query.select(
                 new QGetOrderListDto(
                         order.id,
-                        order.orderId,
+                        order.orderCode,
                         order.name,
                         order.createdAt,
                         order.updatedAt

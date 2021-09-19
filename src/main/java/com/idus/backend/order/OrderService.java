@@ -27,7 +27,7 @@ public class OrderService {
         Member memberEntity = memberRepository.findById(memberId).get();
 
         Orders order = new Orders();
-        order.orderId = this.createOrderId();
+        order.orderCode = this.createOrderCode();
         order.name = dto.getName();
         order.member = memberEntity;
         Orders orderEntity = orderRepository.save(order);
@@ -36,7 +36,7 @@ public class OrderService {
     }
 
     // 주문번호 랜덤생성
-    private String createOrderId() {
+    private String createOrderCode() {
         Random random = new Random();
         StringBuffer buffer = new StringBuffer();
 
@@ -47,13 +47,13 @@ public class OrderService {
                 buffer.append((random.nextInt(10)));
             }
         }
-        String orderId = buffer.toString();
+        String orderCode = buffer.toString();
 
-        if (orderRepositorySupport.countByOrderId(orderId) > 0) {
-            orderId = this.createOrderId();
+        if (orderRepositorySupport.countByOrderCode(orderCode) > 0) {
+            orderCode = this.createOrderCode();
         }
 
-        return orderId;
+        return orderCode;
     }
 
     // 주문목록조회
