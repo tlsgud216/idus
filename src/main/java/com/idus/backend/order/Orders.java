@@ -11,7 +11,7 @@ public class Orders extends Auditing {
     @GeneratedValue()
     Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, length = 20)
     String orderCode;
 
     @Column(nullable = false, length = 100)
