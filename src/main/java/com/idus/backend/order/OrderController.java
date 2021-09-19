@@ -1,6 +1,6 @@
 package com.idus.backend.order;
 
-import com.idus.backend.order.dto.GetOrderListDto;
+import com.idus.backend.order.dto.GetCurrentMemberOrderListDto;
 import com.idus.backend.order.dto.PostOderDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class OrderController {
     }
 
     @GetMapping("/list")
-    ResponseEntity<List<GetOrderListDto>> getOrderList() {
-        return ResponseEntity.ok(orderService.getOrderListDto());
+    ResponseEntity<List<GetCurrentMemberOrderListDto>> getCurrentMemberOrderList() {
+        return ResponseEntity.ok(orderService.getCurrentMemberOrderList());
     }
 }

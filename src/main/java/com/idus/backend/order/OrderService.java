@@ -2,7 +2,7 @@ package com.idus.backend.order;
 
 import com.idus.backend.member.Member;
 import com.idus.backend.member.MemberRepository;
-import com.idus.backend.order.dto.GetOrderListDto;
+import com.idus.backend.order.dto.GetCurrentMemberOrderListDto;
 import com.idus.backend.order.dto.PostOderDto;
 import com.idus.backend.utils.SessionUtil;
 import lombok.AllArgsConstructor;
@@ -57,7 +57,7 @@ public class OrderService {
     }
 
     // 로그인회원 주문목록조회
-    public List<GetOrderListDto> getOrderListDto() {
+    public List<GetCurrentMemberOrderListDto> getCurrentMemberOrderList() {
         Long memberId = SessionUtil.currentMemberId();
         return orderRepositorySupport.findByMemberId(memberId);
     }

@@ -61,7 +61,7 @@ public class MemberService implements UserDetailsService {
     }
 
     // 로그인회원 상세정보 조회
-    public GetMemberDetailDto getMemberDetail() {
+    public GetCurrentMemberDetailDto getCurrentMemberDetail() {
         Long memberId = SessionUtil.currentMemberId();
         return memberRepositorySupport.findByMemberId(memberId);
     }

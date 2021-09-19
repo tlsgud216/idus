@@ -1,6 +1,6 @@
 package com.idus.backend.member;
 
-import com.idus.backend.member.dto.GetMemberDetailDto;
+import com.idus.backend.member.dto.GetCurrentMemberDetailDto;
 import com.idus.backend.member.dto.PostJoinDto;
 import com.idus.backend.member.dto.PostSignInDto;
 import com.idus.backend.member.dto.SearchMemberListDto;
@@ -27,8 +27,8 @@ public class MemberController {
     }
 
     @GetMapping("/info")
-    ResponseEntity<GetMemberDetailDto> getMemberDetail() {
-        return ResponseEntity.ok(memberService.getMemberDetail());
+    ResponseEntity<GetCurrentMemberDetailDto> getCurrentMemberDetail() {
+        return ResponseEntity.ok(memberService.getCurrentMemberDetail());
     }
 
     @GetMapping("/list")
