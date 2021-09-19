@@ -35,21 +35,6 @@ public class MemberService implements UserDetailsService {
 
     // 회원가입
     public long join(PostJoinDto dto) {
-        // 이름 체크 (한글, 영문 대소문자)
-        if (!dto.getName().matches("^[가-힣A-Za-z]*$")) throw new RuntimeException();
-
-        // 별명 체크 (영문 소문자)
-        if (!dto.getNickname().matches("^[a-z]*$")) throw new RuntimeException();
-
-        // 비밀번호 체크 (영문 대문자, 영문 소문자, 특수문자, 숫자 각 1개 이상 포함)
-        if (!dto.getPassword().matches("^.*(?=^.{10,}$)(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$")) throw new RuntimeException();
-
-        // 전화번호 체크 (숫자)
-        if (!dto.getPhone().matches("^[0-9]*$")) throw new RuntimeException();
-        
-        // 이메일 형식 체크
-        if (!dto.getEmail().matches("[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$")) throw new RuntimeException();
-
         Member member = new Member();
         member.loginId = dto.getEmail();
         member.password = passwordEncoder.encode(dto.getPassword());

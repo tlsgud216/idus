@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class MemberController {
 
     @ApiOperation("회원가입")
     @PostMapping("/join")
-    ResponseEntity<Long> join(@RequestBody PostJoinDto dto) {
+    ResponseEntity<Long> join(@Valid @RequestBody PostJoinDto dto) {
         return ResponseEntity.ok(memberService.join(dto));
     }
 
