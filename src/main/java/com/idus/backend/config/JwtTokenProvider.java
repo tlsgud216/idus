@@ -15,11 +15,12 @@ import java.util.Date;
 public class JwtTokenProvider {
     private final JwtProperties jwtProperties;
 
-    public String createToken(String loginId) {
+    public String createToken(String loginId, Long memberId) {
         Claims claims = Jwts.claims().setSubject(loginId);
         Date now = new Date();
         return Jwts.builder()
                 .setClaims(claims)
+                .claim("member_id", memberId)
                 .setIssuedAt(now)
                 .setExpiration(new Date(now.getTime() + jwtProperties.expire_date))
                 .signWith(Keys.hmacShaKeyFor(jwtProperties.secret.getBytes(StandardCharsets.UTF_8)), SignatureAlgorithm.HS512)

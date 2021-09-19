@@ -1,5 +1,6 @@
 package com.idus.backend.member;
 
+import com.idus.backend.common.Auditing;
 import com.idus.backend.member.commonTypes.GenderTypes;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-public class Member implements UserDetails {
+public class Member extends Auditing implements UserDetails {
     @Id
     @GeneratedValue()
     Long id;

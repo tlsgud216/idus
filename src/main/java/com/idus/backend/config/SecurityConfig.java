@@ -1,5 +1,6 @@
 package com.idus.backend.config;
 
+import com.idus.backend.filter.JwtRequestFilter;
 import com.idus.backend.member.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +15,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final MemberService memberService;
+    private final JwtProperties jwtProperties;
     private final PasswordEncoder passwordEncoder;
+
+    private final MemberService memberService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -24,7 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/api/**").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+        .and()
+        .addFilter(new JwtRequestFilter(authenticationManager(), jwtProperties));
     }
 
     @Override
