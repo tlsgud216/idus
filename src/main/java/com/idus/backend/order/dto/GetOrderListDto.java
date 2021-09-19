@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class GetCurrentMemberOrderListDto {
+public class GetOrderListDto {
     Long id;
     String orderCode;
     String name;
@@ -14,7 +14,7 @@ public class GetCurrentMemberOrderListDto {
     LocalDateTime updatedAt;
 
     @QueryProjection
-    public GetCurrentMemberOrderListDto(
+    public GetOrderListDto(
             Long id,
             String orderCode,
             String name,

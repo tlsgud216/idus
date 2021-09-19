@@ -20,7 +20,7 @@ public class MemberRepositorySupport extends QuerydslRepositorySupport {
     }
 
     // 회원정보상세조회
-    public GetCurrentMemberDetailDto findByMemberId(Long memberId) {
+    public GetMemberDetailDto findByMemberId(Long memberId) {
         return query.select(
                 new QGetMemberDetailDto(
                     member.loginId,

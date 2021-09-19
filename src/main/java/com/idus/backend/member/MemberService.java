@@ -2,6 +2,8 @@ package com.idus.backend.member;
 
 import com.idus.backend.config.JwtTokenProvider;
 import com.idus.backend.member.dto.*;
+import com.idus.backend.order.OrderRepositorySupport;
+import com.idus.backend.order.dto.GetOrderListDto;
 import com.idus.backend.utils.SessionUtil;
 import com.querydsl.jpa.impl.JPAQuery;
 import lombok.AllArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -22,6 +25,7 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
     private final MemberRepositorySupport memberRepositorySupport;
+    private final OrderRepositorySupport orderRepositorySupport;
 
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
@@ -61,9 +65,19 @@ public class MemberService implements UserDetailsService {
     }
 
     // 로그인회원 상세정보 조회
-    public GetCurrentMemberDetailDto getCurrentMemberDetail() {
+    public GetMemberDetailDto getCurrentMemberDetail() {
         Long memberId = SessionUtil.currentMemberId();
         return memberRepositorySupport.findByMemberId(memberId);
+    }
+
+    // 단일회원 상세정보 조회
+    public GetMemberDetailDto getMemberDetail(Long memberId) {
+        return memberRepositorySupport.findByMemberId(memberId);
+    }
+
+    // 단일회원 주문목록 조회
+    public List<GetOrderListDto> getMemberOrderList(Long memberId) {
+        return orderRepositorySupport.findByMemberId(memberId);
     }
 
     // 회원목록 조회 (with 최근주문조회)

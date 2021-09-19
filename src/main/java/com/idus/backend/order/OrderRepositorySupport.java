@@ -1,6 +1,6 @@
 package com.idus.backend.order;
 
-import com.idus.backend.order.dto.GetCurrentMemberOrderListDto;
+import com.idus.backend.order.dto.GetOrderListDto;
 import com.idus.backend.order.dto.QGetOrderListDto;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -26,7 +26,7 @@ public class OrderRepositorySupport extends QuerydslRepositorySupport {
     }
 
     // 회원별 주문목록 조회
-    public List<GetCurrentMemberOrderListDto> findByMemberId(Long memberId) {
+    public List<GetOrderListDto> findByMemberId(Long memberId) {
         return query.select(
                 new QGetOrderListDto(
                         order.id,

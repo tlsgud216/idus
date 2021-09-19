@@ -1,13 +1,15 @@
 package com.idus.backend.member;
 
-import com.idus.backend.member.dto.GetCurrentMemberDetailDto;
+import com.idus.backend.member.dto.GetMemberDetailDto;
 import com.idus.backend.member.dto.PostJoinDto;
 import com.idus.backend.member.dto.PostSignInDto;
 import com.idus.backend.member.dto.SearchMemberListDto;
+import com.idus.backend.order.dto.GetOrderListDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @AllArgsConstructor
@@ -27,8 +29,18 @@ public class MemberController {
     }
 
     @GetMapping("/info")
-    ResponseEntity<GetCurrentMemberDetailDto> getCurrentMemberDetail() {
+    ResponseEntity<GetMemberDetailDto> getCurrentMemberDetail() {
         return ResponseEntity.ok(memberService.getCurrentMemberDetail());
+    }
+
+    @GetMapping("/{id}")
+    ResponseEntity<GetMemberDetailDto> getCurrentMemberDetail(@PathVariable Long id) {
+        return ResponseEntity.ok(memberService.getMemberDetail(id));
+    }
+
+    @GetMapping("/{id}/order")
+    ResponseEntity<List<GetOrderListDto>> getOrderList(@PathVariable Long id) {
+        return ResponseEntity.ok(memberService.getMemberOrderList(id));
     }
 
     @GetMapping("/list")

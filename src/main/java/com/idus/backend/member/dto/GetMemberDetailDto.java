@@ -7,7 +7,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class GetCurrentMemberDetailDto {
+public class GetMemberDetailDto {
     String loginId;
     String name;
     String nickname;
@@ -18,7 +18,7 @@ public class GetCurrentMemberDetailDto {
     LocalDateTime updatedAt;
 
     @QueryProjection
-    public GetCurrentMemberDetailDto(
+    public GetMemberDetailDto(
             String loginId,
             String name,
             String nickname,
