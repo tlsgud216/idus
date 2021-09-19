@@ -1,0 +1,31 @@
+CREATE TABLE `member` (
+	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
+	`createdAt` DATETIME NULL DEFAULT NULL,
+	`updatedAt` DATETIME NULL DEFAULT NULL,
+	`email` VARCHAR(100) NOT NULL COLLATE 'utf8_bin',
+	`gender` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8_bin',
+	`loginId` VARCHAR(255) NOT NULL COLLATE 'utf8_bin',
+	`name` VARCHAR(20) NOT NULL COLLATE 'utf8_bin',
+	`nickname` VARCHAR(30) NOT NULL COLLATE 'utf8_bin',
+	`password` VARCHAR(255) NOT NULL COLLATE 'utf8_bin',
+	`phone` VARCHAR(20) NOT NULL COLLATE 'utf8_bin',
+	PRIMARY KEY (`id`) USING BTREE,
+	UNIQUE INDEX `UK_3gj1odv84axhg8cjrvgx4xxhj` (`loginId`) USING BTREE
+)
+COLLATE='utf8mb4_bin'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `orders` (
+	`id` BIGINT(19) NOT NULL AUTO_INCREMENT,
+	`createdAt` DATETIME NULL DEFAULT NULL,
+	`updatedAt` DATETIME NULL DEFAULT NULL,
+	`name` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_bin',
+	`member_id` BIGINT(19) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `FKleg7wy1ic99waq6gm71sf8tdc` (`member_id`) USING BTREE,
+	CONSTRAINT `FKleg7wy1ic99waq6gm71sf8tdc` FOREIGN KEY (`member_id`) REFERENCES `idus`.`member` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+COLLATE='utf8mb4_bin'
+ENGINE=InnoDB
+;
