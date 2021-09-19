@@ -4,6 +4,8 @@ import com.idus.backend.member.commonTypes.GenderTypes;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class GetMemberDetailDto {
     String loginId;
@@ -12,6 +14,8 @@ public class GetMemberDetailDto {
     String phone;
     String email;
     GenderTypes gender;
+    LocalDateTime createdAt;
+    LocalDateTime updatedAt;
 
     @QueryProjection
     public GetMemberDetailDto(
@@ -20,7 +24,9 @@ public class GetMemberDetailDto {
             String nickname,
             String phone,
             String email,
-            GenderTypes gender
+            GenderTypes gender,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt
     ) {
         this.loginId = loginId;
         this.name = name;
@@ -28,6 +34,8 @@ public class GetMemberDetailDto {
         this.phone = phone;
         this.email = email;
         this.gender = gender;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
 
     }
 }

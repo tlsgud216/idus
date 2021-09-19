@@ -3,6 +3,7 @@ package com.idus.backend.member;
 import com.idus.backend.member.dto.GetMemberDetailDto;
 import com.idus.backend.member.dto.PostJoinDto;
 import com.idus.backend.member.dto.PostSignInDto;
+import com.idus.backend.member.dto.SearchMemberListDto;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +29,10 @@ public class MemberController {
     @GetMapping("/info")
     ResponseEntity<GetMemberDetailDto> getMemberDetail() {
         return ResponseEntity.ok(memberService.getMemberDetail());
+    }
+
+    @GetMapping("/list")
+    ResponseEntity<Map<String, Object>> getMemberList(SearchMemberListDto dto) {
+        return ResponseEntity.ok(memberService.getMemberList(dto));
     }
 }

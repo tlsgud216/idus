@@ -1,10 +1,9 @@
 package com.idus.backend.member;
 
-import com.idus.backend.utils.SessionUtil;
 import com.idus.backend.config.JwtTokenProvider;
-import com.idus.backend.member.dto.GetMemberDetailDto;
-import com.idus.backend.member.dto.PostJoinDto;
-import com.idus.backend.member.dto.PostSignInDto;
+import com.idus.backend.member.dto.*;
+import com.idus.backend.utils.SessionUtil;
+import com.querydsl.jpa.impl.JPAQuery;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -61,14 +60,19 @@ public class MemberService implements UserDetailsService {
         return resultMap;
     }
 
-    // 단일회원 상세정보 조회
+    // 로그인회원 상세정보 조회
     public GetMemberDetailDto getMemberDetail() {
         Long memberId = SessionUtil.currentMemberId();
         return memberRepositorySupport.findByMemberId(memberId);
     }
 
-    // 여러회원목록조회
-    public void getMemberList() {
+    // 회원목록 조회 (with 최근주문조회)
+    public Map<String, Object> getMemberList(SearchMemberListDto dto) {
+        JPAQuery<GetMemberListDto> query =  memberRepositorySupport.findMemberListWithLatestOrder(dto);
 
+        Map<String, Object> resultMap = new HashMap<>();
+        resultMap.put("count", query.fetchCount());
+        resultMap.put("list", query.fetch());
+        return resultMap;
     }
 }

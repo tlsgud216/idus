@@ -56,7 +56,7 @@ public class OrderService {
         return orderCode;
     }
 
-    // 주문목록조회
+    // 로그인회원 주문목록조회
     public List<GetOrderListDto> getOrderListDto() {
         Long memberId = SessionUtil.currentMemberId();
         return orderRepositorySupport.findByMemberId(memberId);
