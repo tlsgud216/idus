@@ -10,6 +10,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     initialization-mode: always
     url: jdbc:mysql://127.0.0.1:3306/idus?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+    slave-list:
+      - name: slave_1
+        url: jdbc:mysql://127.0.0.1:3306/idus?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: password
 
