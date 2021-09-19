@@ -4,7 +4,7 @@ import com.idus.backend.member.commonTypes.GenderTypes;
 import lombok.Data;
 
 @Data
-public class PostSignUpDto {
+public class PostJoinDto {
     String password;
 
     String name;
